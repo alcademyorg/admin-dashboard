@@ -26,7 +26,7 @@ Before you begin, ensure you have the following:
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd codeguide-starter-lite
+   cd alcademy-starter-lite
    ```
 
 2. **Install dependencies**

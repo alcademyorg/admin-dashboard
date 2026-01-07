@@ -1,10 +1,10 @@
-# CLAUDE.md - CodeGuide Starter Kit
+# CLAUDE.md - Alcademy Starter Kit
 
 This file contains essential context about the project structure, technologies, and conventions to help Claude understand and work effectively within this codebase.
 
 ## Project Overview
 
-**CodeGuide Starter Kit** is a modern Next.js starter template featuring authentication, database integration, AI capabilities, and a comprehensive UI component system.
+**Alcademy Starter Kit** is a modern Next.js starter template featuring authentication, database integration, AI capabilities, and a comprehensive UI component system.
 
 ### Core Technologies
 
@@ -57,7 +57,7 @@ src/
 - User utilities in `src/lib/user.ts` use `currentUser()` from Clerk
 
 ### Supabase Integration
-- **Client**: `createSupabaseServerClient()` for server-side with Clerk tokens  
+- **Client**: `createSupabaseServerClient()` for server-side with Clerk tokens
 - **RLS**: Row Level Security uses `auth.jwt() ->> 'sub'` for Clerk user IDs
 - **Example Migration**: `supabase/migrations/001_example_tables_with_rls.sql`
 
@@ -69,17 +69,17 @@ import { createSupabaseServerClient } from "@/lib/supabase"
 
 export async function getServerData() {
   const supabase = await createSupabaseServerClient()
-  
+
   const { data, error } = await supabase
     .from('posts')
     .select('*')
     .order('created_at', { ascending: false })
-  
+
   if (error) {
     console.error('Database error:', error)
     return null
   }
-  
+
   return data
 }
 ```
@@ -96,13 +96,13 @@ function ClientComponent() {
 
   const fetchData = async () => {
     const token = await getToken()
-    
+
     // Pass token manually for client-side operations
     const { data, error } = await supabase
       .from('posts')
       .select('*')
       .auth(token)
-    
+
     return data
   }
 }
@@ -234,7 +234,7 @@ CREATE POLICY "Users can read public profiles or own profile" ON profiles
 -- Owner and collaborators can access
 CREATE POLICY "Owners and collaborators can read" ON collaborations
   FOR SELECT USING (
-    auth.jwt() ->> 'sub' = owner_id OR 
+    auth.jwt() ->> 'sub' = owner_id OR
     auth.jwt() ->> 'sub' = ANY(collaborators)
   );
 ```
@@ -250,9 +250,9 @@ import { getCurrentUser } from "@/lib/user"
 export async function createPost(title: string, content: string) {
   const user = await getCurrentUser()
   if (!user) return null
-  
+
   const supabase = await createSupabaseServerClient()
-  
+
   const { data, error } = await supabase
     .from('posts')
     .insert({
@@ -262,19 +262,19 @@ export async function createPost(title: string, content: string) {
     })
     .select()
     .single()
-  
+
   if (error) {
     console.error('Error creating post:', error)
     return null
   }
-  
+
   return data
 }
 
 // READ - Fetch user's posts
 export async function getUserPosts() {
   const supabase = await createSupabaseServerClient()
-  
+
   const { data, error } = await supabase
     .from('posts')
     .select(`
@@ -285,48 +285,48 @@ export async function getUserPosts() {
       user_id
     `)
     .order('created_at', { ascending: false })
-  
+
   if (error) {
     console.error('Error fetching posts:', error)
     return []
   }
-  
+
   return data
 }
 
 // UPDATE - Modify existing record
 export async function updatePost(postId: string, updates: { title?: string; content?: string }) {
   const supabase = await createSupabaseServerClient()
-  
+
   const { data, error } = await supabase
     .from('posts')
     .update(updates)
     .eq('id', postId)
     .select()
     .single()
-  
+
   if (error) {
     console.error('Error updating post:', error)
     return null
   }
-  
+
   return data
 }
 
 // DELETE - Remove record
 export async function deletePost(postId: string) {
   const supabase = await createSupabaseServerClient()
-  
+
   const { error } = await supabase
     .from('posts')
     .delete()
     .eq('id', postId)
-  
+
   if (error) {
     console.error('Error deleting post:', error)
     return false
   }
-  
+
   return true
 }
 ```
@@ -346,12 +346,12 @@ function useRealtimePosts() {
   useEffect(() => {
     const fetchPosts = async () => {
       const token = await getToken()
-      
+
       const { data } = await supabase
         .from('posts')
         .select('*')
         .auth(token)
-      
+
       setPosts(data || [])
     }
 
@@ -360,8 +360,8 @@ function useRealtimePosts() {
     // Subscribe to changes
     const subscription = supabase
       .channel('posts-channel')
-      .on('postgres_changes', 
-        { event: '*', schema: 'public', table: 'posts' }, 
+      .on('postgres_changes',
+        { event: '*', schema: 'public', table: 'posts' },
         (payload) => {
           fetchPosts() // Refetch on any change
         }
@@ -392,7 +392,7 @@ Routes matching `/dashboard(.*)` and `/profile(.*)` are automatically protected 
 
 ```bash
 npm run dev          # Start development server with Turbopack
-npm run build        # Build for production  
+npm run build        # Build for production
 npm run start        # Start production server
 npm run lint         # Run ESLint
 ```

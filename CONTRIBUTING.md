@@ -1,6 +1,6 @@
-# Contributing to CodeGuide Starter Kit
+# Contributing to Alcademy Starter Kit
 
-We welcome contributions to the CodeGuide Starter Kit! This document provides guidelines for contributing to the project.
+We welcome contributions to the Alcademy Starter Kit! This document provides guidelines for contributing to the project.
 
 ## Getting Started
 

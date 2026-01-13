@@ -1,12 +1,8 @@
 "use client"
 
-import { DashboardLayout } from '@/components/dashboard/layout'
-import { DashboardOverview } from '@/components/dashboard/overview'
+import { Hero } from '@/components/ui/animated-hero'
+import Image from 'next/image'
 
 export default function Home() {
-  return (
-    <DashboardLayout>
-      <DashboardOverview />
-    </DashboardLayout>
-  )
+  return <Hero />
 }

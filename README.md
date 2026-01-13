@@ -19,7 +19,7 @@ Before you begin, ensure you have the following:
 - Node.js 18+ installed
 - A [Clerk](https://clerk.com/) account for authentication
 - A [Supabase](https://supabase.com/) account for database
-- Generated project documents from [Alcademy](https://github.com/alcademyorg) for best development experience
+- Generated project documents from [CodeGuide](https://github.com/alcademyorg) for best development experience
 
 ## Getting Started
 
@@ -103,7 +103,7 @@ alcademy-starter/
 ├── utils/             # Utility functions
 ├── public/            # Static assets
 ├── styles/            # Global styles
-├── documentation/     # Generated documentation from Alcademy
+├── documentation/     # Generated documentation from CodeGuide
 └── supabase/          # Supabase configurations and migrations
 ```
 

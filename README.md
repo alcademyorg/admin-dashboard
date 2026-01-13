@@ -1,7 +1,7 @@
-[![CodeGuide](/codeguide-backdrop.svg)](https://codeguide.dev)
+[![Alcademy](/alcademy-logo.png)](https://github.com/alcademyorg)
 
 
-# CodeGuide Starter Lite
+# Alcademy Starter Lite
 
 A modern web application starter template built with Next.js 14, featuring authentication, database integration.
 
@@ -19,14 +19,14 @@ Before you begin, ensure you have the following:
 - Node.js 18+ installed
 - A [Clerk](https://clerk.com/) account for authentication
 - A [Supabase](https://supabase.com/) account for database
-- Generated project documents from [CodeGuide](https://codeguide.dev/) for best development experience
+- Generated project documents from [CodeGuide](https://github.com/alcademyorg) for best development experience
 
 ## Getting Started
 
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd codeguide-starter-lite
+   cd alcademy-starter-lite
    ```
 
 2. **Install dependencies**
@@ -97,7 +97,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 ## Project Structure
 
 ```
-codeguide-starter/
+alcademy-starter/
 ├── app/                # Next.js app router pages
 ├── components/         # React components
 ├── utils/             # Utility functions
@@ -120,7 +120,7 @@ To implement the generated documentation from CodeGuide:
    ```bash
    # Example structure
    documentation/
-   ├── project_requirements_document.md             
+   ├── project_requirements_document.md
    ├── app_flow_document.md
    ├── frontend_guideline_document.md
    └── backend_structure_document.md
